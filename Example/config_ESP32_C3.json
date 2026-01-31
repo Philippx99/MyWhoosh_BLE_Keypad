@@ -1,0 +1,9 @@
+{
+  "ble_name": "Mywoosh_Keypad",
+  "buttons": [
+    { "pin": 4, "key": "I", "mode": "pullup", "debounce": 100 },
+    { "pin": 5, "key": "K", "mode": "pullup", "debounce": 100 },
+    { "pin": 16, "key": "D", "mode": "pullup", "debounce": 100 },
+    { "pin": 17, "key": "A", "mode": "pullup", "debounce": 100 }
+  ]
+}
