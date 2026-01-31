@@ -61,16 +61,23 @@ Beispiel:
 - Die Keycodes entsprechen den Tastaturbefehlen, die MYWhoosh akzeptiert (z.B. I, K, D, A, ...)
 - Jede Taste kann drei Aktionen auslösen (z.B. "key_normal": "I", "key_double": "J", "key_long": "L")
 
-# Summary of All Working Shortcuts
-Here's a consolidated list of all the currently functioning keyboard shortcuts in MyWhoosh:
+# Alle bekanten Tasten 
+Hier ist eine zusammengefasste Liste aller aktuell in MyWhoosh funktionierenden Tastenkombinationen:
 
-Category        	Key(s)        	Function                        
-Steering        	← → or A D         	links / rechts auf Strecke steuern      
+Kategorie       	Tasten       	Funktion                        
+Steuerung        	← → or A D      links / rechts auf Strecke steuern (Abbiegen derzeit nicht möglich)     
 Emotes          	1 - 7        	Peace, Wave, Fist bump, Dap, Elbow flick, Toast, Thumbs up          
 UI Toggle        	U            	Minimal UI Mode                  
-Virtual Shifting	I / K        	Gear Up / Down                  
+Virtual Shifting	I / K        	Gang hoch / runter                    
 
 leider gibt es derzeit keine, mir bekannten Tasten, um Abzubiegen oder um einen U-Turn auszuführen
+
+für die Cursortasten müssen folgende bezeichnungen anstatt eines Buchstabens oder einer Zahl verwendet werden: 
+Pfeil nach oben: "KEY_UP_ARROW"
+Pfeil nach unten: "KEY_DOWN_ARROW"
+Pfeil nach links: "KEY_LEFT_ARROW"
+Pfeil nach rechts: "KEY_RIGHT_ARROW"
+*** alle weiteren Sondertasten entnehmen sie bitte der "BleKeybords.h" zwischen Zeile 36 und 120 aus de ESP32 BLE Keybord Library
 
 ## Lizenz
 MIT License
