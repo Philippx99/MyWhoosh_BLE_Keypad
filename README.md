@@ -64,11 +64,11 @@ Beispiel:
 # Alle bekanten Tasten 
 Hier ist eine zusammengefasste Liste aller aktuell in MyWhoosh funktionierenden Tastenkombinationen:
 
-Kategorie       	Tasten       	Funktion                        
-Steuerung        	← → or A D      links / rechts auf Strecke steuern (Abbiegen derzeit nicht möglich)     
-Emotes          	1 - 7        	Peace, Wave, Fist bump, Dap, Elbow flick, Toast, Thumbs up          
-UI Toggle        	U            	Minimal UI Mode                  
-Virtual Shifting	I / K        	Gang hoch / runter                    
+Kategorie |	Tasten | Funktion                        
+Steuerung | ← → or A D |links / rechts auf Strecke steuern (Abbiegen derzeit nicht möglich)     
+Emotes | 1 - 7 | Peace, Wave, Fist bump, Dap, Elbow flick, Toast, Thumbs up          
+UI Toggle | U | Minimal UI Mode                  
+Virtual Schalten |I / K | Gang hoch / runter                    
 
 leider gibt es derzeit keine, mir bekannten Tasten, um Abzubiegen oder um einen U-Turn auszuführen
 
@@ -86,3 +86,4 @@ MIT License
 
 **Hinweis:**
 Dieses Projekt ist ein Community-Projekt und steht in keiner Verbindung zu MYWhoosh oder deren Entwicklern. Für Schäden oder Fehlfunktionen wird keine Haftung übernommen.
+
