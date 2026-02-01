@@ -15,7 +15,7 @@ Dieses Projekt implementiert ein BLE-Keypad auf Basis eines ESP32/ESP32-C3, um d
 - Taster (beliebige Anzahl, empfohlen: 4–12)
 - Optional: Gehäuse, Pullup/Pulldown-Widerstände
 
-## Installation
+## Installation & Inbetriebnahme
 
 1. **Repository klonen**
    ```sh
@@ -25,34 +25,42 @@ Dieses Projekt implementiert ein BLE-Keypad auf Basis eines ESP32/ESP32-C3, um d
 2. **PlatformIO installieren** (VS Code empfohlen)
 3. **Board auswählen**
    - In `platformio.ini` das passende Board setzen (`esp32dev` oder `esp32-c3-devkitm-1`)
-4. **Tastenbelegung anpassen**
-   - Datei `data/config.json` nach Wunsch editieren
-5. **Dateisystem-Image hochladen**
+4. **Firmware & Dateisystem hochladen**
    ```sh
    pio run --target uploadfs
-   ```
-6. **Firmware flashen**
-   ```sh
    pio run --target upload
    ```
-7. **Mit MYWhoosh koppeln**
+5. **Konfiguration im Web-Browser**
+   - Nach dem ersten Start (oder wenn keine WLAN-Verbindung möglich ist) öffnet das Gerät ein WLAN namens `Keypad-Config` (Captive Portal).
+   - Mit Smartphone/PC verbinden und im Browser `http://192.168.4.1` aufrufen.
+   - Die Konfiguration (WLAN, BLE-Name, Buttons etc.) kann komfortabel im Web-Formular angepasst werden.
+   - Nach Speichern und Neustart verbindet sich das Gerät mit dem eingestellten WLAN. Die Konfiguration ist dann auch über die zugewiesene IP im Heimnetz erreichbar (siehe Serieller Monitor).
+   - **Tipp:** Die aktuelle IP und Debug-Infos werden im seriellen Monitor ausgegeben.
+6. **Mit MYWhoosh koppeln**
    - Das Keypad erscheint als BLE-Tastatur (Name konfigurierbar)
 
-## Konfiguration (`data/config.json`)
 
-Beispiel:
+## Web-Konfiguration & config.json
+
+Die Konfiguration erfolgt komfortabel über das Web-Interface (siehe oben). Alternativ kann die Datei `data/config.json` direkt bearbeitet werden.
+
+Beispiel für `config.json`:
 ```json
 {
-  "ble_name": "Mywhoosh_Keypad",
-  "doubleClickTime": 400,
-  "longPressTime": 800,
-  "buttons": [
-    { "pin": 1, "key_normal": "I", "key_double": "J", "key_long": "L", "mode": "pullup", "debounce": 100 },
-    { "pin": 2, "key_normal": "K", "key_double": "M", "key_long": "N", "mode": "pullup", "debounce": 100 }
-  ]
+   "ble_name": "Mywhoosh_Keypad",
+   "wifi_ssid": "DEIN_WLAN",
+   "wifi_pass": "DEIN_PASSWORT",
+   "doubleClickTime": 400,
+   "longPressTime": 800,
+   "buttons": [
+      { "pin": 4, "key_normal": "I", "key_double": "1", "key_long": "5", "mode": "pullup", "debounce": 100 },
+      { "pin": 5, "key_normal": "K", "key_double": "2", "key_long": "6", "mode": "pullup", "debounce": 100 }
+   ]
 }
 ```
 - **ble_name**: Anzeigename im BLE
+- **wifi_ssid**: WLAN-Name für automatische Verbindung
+- **wifi_pass**: WLAN-Passwort
 - **doubleClickTime**: Zeitfenster für Doppelklick (ms, global)
 - **longPressTime**: Zeit für Langklick (ms, global)
 - **buttons**: Liste der Tasten (GPIO, Keycodes, Modus, Entprellzeit)
@@ -78,6 +86,18 @@ Pfeil nach unten: "KEY_DOWN_ARROW"
 Pfeil nach links: "KEY_LEFT_ARROW"
 Pfeil nach rechts: "KEY_RIGHT_ARROW"
 *** alle weiteren Sondertasten entnehmen sie bitte der "BleKeybords.h" zwischen Zeile 36 und 120 aus de ESP32 BLE Keybord Library
+
+## WLAN & Captive Portal
+
+- Das Gerät verbindet sich nach Neustart automatisch mit dem in der Konfiguration hinterlegten WLAN.
+- Ist keine Verbindung möglich, wird ein Access Point `Keypad-Config` geöffnet. Über das Web-Portal (http://192.168.4.1) kann die Konfiguration geändert werden.
+- Nach erfolgreicher WLAN-Verbindung ist das Web-Portal unter der zugewiesenen IP im Heimnetz erreichbar (siehe Serieller Monitor).
+- alternativ kann auch die config.json editiert und ins Filesystem hochgeladen werden. Eine verbindung ins heimische Wlan ist auch kein muss 
+
+## Debugging
+
+- Alle wichtigen Status- und Fehlerausgaben (WLAN, Webserver, HTTP-Requests) werden im seriellen Monitor (115200 Baud) ausgegeben.
+- Bei Problemen bitte die Ausgaben dort prüfen.
 
 ## Lizenz
 MIT License
