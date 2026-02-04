@@ -405,13 +405,6 @@ void loop() {
         webserverActive = false;
       }
     }
-  /* digitalWrite(8, HIGH);
-  Serial.println("[DEBUG] Builtin LED AN");
-  delay(500);
-  digitalWrite(8, LOW);
-  Serial.println("[DEBUG] Builtin LED AUS");
-  delay(500);
-  */
 
   if (bleKeyboard.isConnected()) {
     unsigned long now = millis();
